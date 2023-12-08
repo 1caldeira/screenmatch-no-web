@@ -1,6 +1,7 @@
 package br.com.alura.screenmatch;
 
 import br.com.alura.screenmatch.model.DataConversion;
+import br.com.alura.screenmatch.model.EpisodeData;
 import br.com.alura.screenmatch.model.SeriesData;
 import br.com.alura.screenmatch.service.RequestAPI;
 import org.springframework.boot.CommandLineRunner;
@@ -22,7 +23,10 @@ public class ScreenmatchApplication implements CommandLineRunner {
 		DataConversion conversion = new DataConversion();
 		SeriesData data = conversion.getData(json, SeriesData.class);
 		System.out.println(data);
-		System.out.println("git commit");
+		json = requestAPI.getData("https://www.omdbapi.com/?t=house+of+the+dragon&season=1&episode=1&apikey=ad0f5b1d");
+		EpisodeData episodeData = conversion.getData(json, EpisodeData.class);
+		System.out.println(episodeData);
+
 
 	}
 }
